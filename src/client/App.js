@@ -3,6 +3,8 @@ import { Col, Container, Row, Button, Form, FormGroup, Label, Input } from "reac
 import VoteForm from './components/VoteForm'
 import NameCard from './components/NameCard'
 import AwardCard from './components/AwardCard'
+import KudosForm from './components/KudosForm'
+
 
 
 class App extends Component {
@@ -10,21 +12,28 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+
       awards: [
         {
           id: 1,
           title: "Best Boss Award!",
-          comment: "Thanks for always looking out for us."
+          comment: "Thanks for always looking out for us.",
+          sender: "Fabian",
+          receiver: "Leon"
         },
         {
           id: 2,
           title: "Longest Commute Award!",
-          comment: "I can't believe Leslie makes it to work as often as she does."
+          comment: "I can't believe Leslie makes it to work as often as she does.",
+          sender: "Archit",
+          receiver: "Laura"
         },
         {
           id: 3,
           title: "Most likely to nap at work!",
-          comment: "Maybe you need more coffee."
+          comment: "Maybe you need more coffee.",
+          sender: "Gobi",
+          receiver: "Owen"
         }
 
       ],
@@ -84,7 +93,7 @@ class App extends Component {
             <Button color="success">Give Kudos</Button>
           </Col>
           <Col md="12">
-            {this.state.awards.map(awards => <AwardCard name={awards.title} description={awards.comment} />)}
+            {this.state.awards.map(awards => <AwardCard rec={awards.receiver} name={awards.title} description={awards.comment} />)}
           </Col>
         </Row>
         <hr />
@@ -94,21 +103,9 @@ class App extends Component {
         }
 
         <hr />
-        <Form>
-          <FormGroup>
-            <Label for="exampleExample">Give Kudos to</Label>
-            <Input type="select">
-              {this.state.users.map(user => <option> {user.name} </option>)}
-            </Input>
-          </FormGroup>
 
-          <FormGroup>
-            <Input type="text" placeholder="Kudos Title" />
-          </FormGroup>
-          <FormGroup>
-            <Input type="text" placeholder="Kudos Text" />
-          </FormGroup>
-        </Form>
+        <KudosForm userObjects={this.state.users} />
+
         {/* NEW CODE GOES BELOW */}
         {this.state.restaurants.map(restaurants => <p>{restaurants.name} </p>)}
         {/* <VoteForm />
