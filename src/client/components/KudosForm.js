@@ -1,16 +1,16 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Input, Button, Label } from "reactstrap";
 
 const KudosForm = props => (
     <Form>
         <FormGroup>
-            <Label>Give Kudos from</Label>
+
+            <h3 className="give-kudos-header">Give Kudos Form</h3>
             <Input type="select" onChange={props.updateSender}>
                 <option>Please select a Sender!</option>
                 {props.users.map(element => <option>{element.name}</option>)}
             </Input>
-            <Label>Give Kudos to</Label>
-            <Input type="select" onChange={props.updateReceiver}>
+            <Input type="select" onChange={props.updateReceiver} className="give-kudos-input">
                 <option>Please select a Receiver!</option>
                 {props.users.map(element => <option>{element.name}</option>)}
             </Input>
@@ -29,6 +29,7 @@ const KudosForm = props => (
             <Button onClick={props.postData}> Submit </Button>
         </FormGroup>
     </Form>
+
 )
 
 export default KudosForm;

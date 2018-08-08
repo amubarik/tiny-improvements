@@ -1,0 +1,13 @@
+.give-kudos-input {
+    margin-top: 10px;
+}
+
+.give-kudos-header {
+    display: flex;
+    justify-content: center;
+    color: darkgreen
+}
+
+.tiny-progress-header {
+    color: darkgreen;
+}

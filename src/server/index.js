@@ -24,13 +24,10 @@ app.get("/api/users", (req, res) => {
     });
 });
 
-app.get("/api/usersA", (req, res) => {
+app.get("/api/aiyshaKudos", (req, res) => {
     salesForce.query(`SELECT id, Name, Comment__c, Sender__c, Receiver__c FROM Kudos__c WHERE Kudos__c.Receiver__r.name='Aiysha'`).then((data) => {
-        console.log(data);
-        // return all of the fields from the object Tiny_Improvements_User__c in SalesForce
         res.json(data.records.map(record => record._fields))
     }).catch((e) => {
-        console.log('Aiysha----', e);
         res.json([])
 
     });
